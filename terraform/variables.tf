@@ -8,7 +8,7 @@ variable "aws_session_token" {
 default="FwoGZXIvYXdzEFsaDNVdMNqQF1HLPQqcHyK3ASTbCZZZso3SOwn2UHCQMKZzvnk9YkAxE0UNrG37k6IieGDvE4xUPzroh2T9pM8pyc5zHmxCejLmPx89BoGKgFtsFAY0cgTloNkhcc6/Dy5OSsJHbIlB/fYiPN4+il2jWfXEizpaYk93pgokd23taN60vdDQcVJDiVL5tDAd5ZJM9dPXpUy65JLnl3nHfPlvt2Yjg+3+jFMyiqY2G/lHAJC4bcMpfNbGlKjzGd4+rqma+0vNLuioMCikob6zBjIt902XndYEIwRWzgJm7V/PnkARwdd2OmIRmizAbFHa61ow77LHFwbpALbYMzFv"
   }
 variable "key_name" {
-  defaule ="ec2pro2_pem"
+  default ="ec2pro2_pem"
   }
 
 variable "instance_ami" {
