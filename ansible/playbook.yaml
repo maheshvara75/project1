@@ -1,0 +1,31 @@
+---
+- hosts: all
+  become: yes
+  remote_user: ubuntu
+
+  tasks:
+    - name: Update and upgrade apt packages
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Install Java
+      apt:
+        name: default-jdk
+        state: present
+
+    - name: Install Python
+      apt:
+        name: python3
+        state: present
+
+    - name: Install Jenkins
+      apt:
+        name: jenkins
+        state: present
+        update_cache: yes
+        force_apt_get: yes
+        
+    - name: Check available Jenkins package
+      shell: apt-cache policy jenkins
+
