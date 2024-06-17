@@ -41,7 +41,7 @@ resource "aws_instance" "jenkins" {
   }
 
   provisioner "local-exec" {
-    command = "echo '${self.public_ip} ansible_user=ubuntu ansible_ssh_private_key_file=/var/lib/jenkins/workspace/NPforpro/terraform/ec2pro2_pem' > ../ansible/inventory"
+    command = "echo '${self.public_ip}' > ../ansible/inventory"
   }
 }
 
