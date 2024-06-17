@@ -39,7 +39,7 @@ pipeline {
         stage('Ansible Setup') {
             steps {
                 dir('ansible') {
-                    sh 'aansible-playbook -i inventory ansible/playbook.yaml --private-key=/home/maheshvara4gmai/terraform-ansible-jenkins/terraform/ec2pro1_pem'
+                    sh 'aansible-playbook -i inventory ansible/playbook.yaml --private-key=/home/maheshvara4gmai/terraform-ansible-jenkins/terraform/ec2pro2_pem'
                 }
             }
         }
