@@ -36,18 +36,6 @@ pipeline {
                 }
             }
         }
-	stage('Playbook Approval') {
-            steps {
-                input 'Do you want to run the playbook?'
-            }
-        }
-        stage('Ansible Setup') {
-            steps {
-                dir('ansible') {
-                    sh 'ansible-playbook -i inventory playbook.yaml --private-key=/var/lib/jenkins/workspace/NPforpro/terraform/ec2pro2_pem'
-                }
-            }
-        }
     }
 }
 
