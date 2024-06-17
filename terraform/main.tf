@@ -1,4 +1,4 @@
-terraform {
+1terraform {
   required_providers {
     aws = {
       source = "hashicorp/aws"
@@ -37,7 +37,7 @@ resource "aws_instance" "jenkins" {
   key_name      = aws_key_pair.key_pair.key_name
 
   tags = {
-    Name = "Jenkins-Server"
+    Name = "Project1-Instance"
   }
 
   provisioner "local-exec" {
