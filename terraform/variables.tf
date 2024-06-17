@@ -1,18 +1,22 @@
 variable "aws_access_key" {
   description = "AWS_ACCESS_KEY"
+  type        = string
   default =""
   }
 variable "aws_secret_key" {
   description = "AWS_SECRET_KEY"
+  type        = string
   default =""
   }
 variable "aws_session_token" {
   description = "AWS_ACCESS_TOKEN"
+  type        = string
   default=""
   }
 variable "key_name" {
   description = "AWS_KEY_NAME"
-  default ="ec2pro2_pem"
+  type        = string
+  default ="ec2pro3_pem"
   }
 variable "instance_ami" {
   description = "AMI ID for the EC2 instances"
