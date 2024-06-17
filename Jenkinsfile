@@ -36,7 +36,7 @@ pipeline {
                 }
             }
         }
-	stage('Approval') {
+	stage('Playbook Approval') {
             steps {
                 input 'Do you want to run the playbook?'
             }
