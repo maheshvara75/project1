@@ -41,21 +41,14 @@ pipeline {
                 input 'Do you want to run the playbook?'
             }
         }
-	stage('Get EC2 Public IP') {
+	
+        stage('Ansible Setup') {
             steps {
-                script {
-                    env.PUBLIC_IP = sh(script: 'cat inventory', returnStdout: true).trim()
+                dir('ansible') {
+                    sh 'ansible-playbook -i inventory playbook.yaml --private-key=../terraform/ec2pro4_pem'
                 }
             }
         }
-        stage('Run Ansible Playbook') {
-            steps {
-                writeFile file: 'inventory', text: """
-                [all]
-                ${env.PUBLIC_IP}
-                """
-                sh 'ansible-playbook -i inventory playbook.yaml --private-key=../terraform/ec2pro4_pem'
-            }
-        }
+
     }
 }
