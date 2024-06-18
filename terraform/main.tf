@@ -52,7 +52,7 @@ resource "aws_instance" "jenkins" {
   key_name      = aws_key_pair.key_pair.key_name
 
   tags = {
-    Name = "Jenkins-Server"
+    Name = "project1-ec2-instance"
   }
 
   provisioner "local-exec" {
