@@ -16,7 +16,7 @@ variable "aws_session_token" {
 variable "key_name" {
   description = "AWS_KEY_NAME"
   type        = string
-  default ="ec2pro4_pem"
+  default =""
   }
 variable "instance_ami" {
   description = "AMI ID for the EC2 instances"
