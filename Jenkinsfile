@@ -51,7 +51,7 @@ pipeline {
 
                 [ec2:vars]
                 ansible_user=ubuntu
-                ansible_ssh_private_key_file=~/.ssh/YOUR_PRIVATE_KEY.pem
+                ansible_ssh_private_key_file=~/.ssh/ec2pro3_pem.pem
                 """
                 sh 'ansible-playbook -i inventory install_java.yml'
             }
