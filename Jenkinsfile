@@ -44,7 +44,7 @@ pipeline {
 	
         stage('Run Ansible Playbook') {
             steps {
-                writeFile file: 'inventory', text: """
+                writeFile file: '/ansible/inventory', text: """
                 [all]
                 ${env.PUBLIC_IP}
                 """
