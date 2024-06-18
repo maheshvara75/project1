@@ -30,7 +30,22 @@ resource "local_file" "private_key" {
   filename = var.key_name
   file_permission = "400"
   }
+resource "aws_security_group" "allow_ssh" {
+  name        = "allow_ssh"
+  description = "Allow SSH inbound traffic"
+  
+  ingress {
+    description = "SSH"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
+  tags = {
+    Name = "allow_ssh"
+  }
+}
 resource "aws_instance" "jenkins" {
   ami           = var.instance_ami # Ubuntu AMI
   instance_type =var.instance_type
