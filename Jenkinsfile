@@ -36,26 +36,12 @@ pipeline {
                 }
             }
         }
-	stage('Get EC2 Public IP') {
+        stage('Ansible Setup') {
             steps {
-                script {
-                    env.PUBLIC_IP = sh(script: 'cat public_ip.txt', returnStdout: true).trim()
+                dir('ansible') {
+                    sh 'ansible-playbook -i inventory playbook.yaml --private-key=../terraform/ec2pro2_pem'
                 }
-            }
-        }
-        stage('Run Ansible Playbook') {
-            steps {
-                writeFile file: 'inventory', text: """
-                [ec2]
-                ${env.PUBLIC_IP}
-
-                [ec2:vars]
-                ansible_user=ubuntu
-                ansible_ssh_private_key_file=~/.ssh/ec2pro3_pem.pem
-                """
-                sh 'ansible-playbook -i inventory install_java.yml'
             }
         }
     }
 }
-
