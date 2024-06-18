@@ -36,6 +36,27 @@ pipeline {
                 }
             }
         }
+	stage('Get EC2 Public IP') {
+            steps {
+                script {
+                    env.PUBLIC_IP = sh(script: 'cat /ansible/public_ip.txt', returnStdout: true).trim()
+                }
+            }
+        }
+        stage('Run Ansible Playbook') {
+            steps {
+                writeFile file: 'inventory', text: """
+                [ec2]
+                ${env.PUBLIC_IP}
+
+                [ec2:vars]
+                ansible_user=ubuntu
+                ansible_ssh_private_key_file=~/.ssh/YOUR_PRIVATE_KEY.pem
+                """
+                sh 'ansible-playbook -i inventory install_java.yml'
+            }
+        }
+    }
     }
 }
 
