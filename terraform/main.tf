@@ -41,7 +41,11 @@ resource "aws_instance" "jenkins" {
   }
 
   provisioner "local-exec" {
-    command = "echo '${self.public_ip}' > ../ansible/inventory"
+    command = "echo '${self.public_ip}' > inventory"
   }
+  provisioner "local-exec" {
+    command = "cp inventory ../ansible/inventory"
+  }
+
 }
 
