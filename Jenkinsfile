@@ -24,7 +24,7 @@ pipeline {
                 }
             }
         }
-        stage('Approval') {
+        stage('Plan Approval') {
             steps {
                 input 'Do you want to apply the plan?'
             }
@@ -34,6 +34,11 @@ pipeline {
                 dir('terraform') {
                     sh 'terraform apply plan.out'
                 }
+            }
+        }
+	stage('Ansible Playbook Approval') {
+            steps {
+                input 'Do you want to run the playbook?'
             }
         }
         stage('Ansible Setup') {
