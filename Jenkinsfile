@@ -41,7 +41,13 @@ pipeline {
                 input 'Do you want to run the playbook?'
             }
         }
-	
+	stage('Get EC2 Public IP') {
+            steps {
+                script {
+                    env.PUBLIC_IP = sh(script: 'cat inventory', returnStdout: true).trim()
+                }
+            }
+        }
         stage('Run Ansible Playbook') {
             steps {
                 writeFile file: 'inventory', text: """
