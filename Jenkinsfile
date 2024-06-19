@@ -36,20 +36,5 @@ pipeline {
                 }
             }
         }
-	stage('Ansible Playbook Approval') {
-            steps {
-                input 'Do you want to run the playbook?'
-            }
-        }
-	
-        stage('Ansible Setup') {
-            steps {
-                dir('ansible') {
-		    sh 'sudo ssh -i ../terraform/ec2pro4_pem ubuntu@inventory'
-                    // sh 'ansible-playbook -i inventory playbook.yaml --private-key=../terraform/ec2pro4_pem'
-                }
-            }
-        }
-
     }
 }
